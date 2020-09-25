@@ -1,0 +1,24 @@
+{
+  "name": "JavaScript-Profesional-Me",
+  "version": "1.0.0",
+  "description": "Uso de JavaScript de manera profesional aprendiendo todos las features que este maneja",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidvanegas2/JavaScript-Profesional-Me.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidvanegas2/JavaScript-Profesional-Me/issues"
+  },
+  "homepage": "https://github.com/davidvanegas2/JavaScript-Profesional-Me#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "liveserver": "^0.1.20"
+  }
+}
