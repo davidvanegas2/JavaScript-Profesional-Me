@@ -1,0 +1,55 @@
+<body>
+    <a href="/exercises/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+        //IIFE: Immediately invoked function express
+        (function() {
+            let color = 'green';
+
+            function printColor() {
+                console.log(color);
+            }
+            printColor();
+        })();
+
+        // Funciones que regresan funciones
+        function makeColor(color) {
+            let colorMessage = `The color is ${color}`;
+
+            return function() {
+                console.log(colorMessage);
+            }
+        }
+
+        let greenColorPrinter = makeColor("green");
+        greenColorPrinter();
+
+        //Variables privadas
+        /* const counter = {
+            count: 3
+        };
+        console.log(conter.count); */
+
+        function makeCounter(n) {
+            let count = n;
+
+            return {
+                increase: function() {
+                    count = count + 1
+                },
+                decrease: function() {
+                    count = count - 1
+                },
+                getCount: function() {
+                    return count
+                }
+            };
+        }
+
+        let counter = makeCounter(7);
+        console.log(counter.getCount());
+        counter.decrease();
+        console.log(counter.getCount());
+    </script>
+</body>
