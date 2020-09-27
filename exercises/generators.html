@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>Proxy</title>
+</head>
+
+<body>
+    <a href="/exercises/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script src="https://unpkg.com/fast-levenshtein@2.0.6/levenshtein.js"></script>
+    <script>
+        //Para hacer un generador simplemente ponemos un * en el final de la palabra function
+        //Ahora bien, para ejecutar un generator usamos la funcion next()
+        //El generador va a realizar su bloque de codigo hasta que haya un yield
+        //Para seguir continuando se debe volver a ejecutar el metodo next()
+        function* simpleGenerator() {
+            console.log("GENERATOR START!");
+            yield 1;
+            yield 2;
+            yield 3; //En español significa ceder
+            console.log("generetor end!");
+        }
+
+        function* idMaker() {
+            let id = 1;
+            while (true) {
+                yield id;
+                id = id + 1;
+            }
+        }
+
+        function* idMakerReset() {
+            let id = 1;
+            let reset;
+            while (true) {
+                reset = yield id;
+                if (reset) {
+                    id = 1;
+                } else {
+                    id = id + 1;
+                }
+            }
+        }
+
+        //Un ejemplo mas complejo con la secuencia de fibonacci
+        function* fibonacci() {
+            let a = 1;
+            let b = 1;
+
+            while (true) {
+                const nextNumber = a + b;
+                a = b;
+                b = nextNumber;
+                yield nextNumber;
+            }
+        }
+
+        const gen = simpleGenerator();
+        const gen2 = idMaker();
+        const gen3 = idMakerReset();
+        const genFibonacci = fibonacci();
+    </script>
+</body>
+
+</html>
