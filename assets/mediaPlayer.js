@@ -6,8 +6,22 @@ function mediaPlayer(config) {
 };
 
 mediaPlayer.prototype._initPlugins = function() {
+    //Se define el objeto player para definir Setters y Getters
+    //Para esto usamos las keywords get y set
+    //De esta manera sabemos que player solo tiene las funciones mencionadas aca abajo
+    const player = {
+        media: this.media,
+        play: () => this.play(),
+        pause: () => this.pause(),
+        get muted() {
+            return this.media.muted;
+        },
+        set muted(value) {
+            this.media.muted = value;
+        }
+    }
     this.plugins.forEach(plugin => {
-        plugin.run(this);
+        plugin.run(player);
     });
 };
 

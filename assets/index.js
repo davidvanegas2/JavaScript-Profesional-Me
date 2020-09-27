@@ -11,7 +11,7 @@ const muteButton = document.querySelector(
     ".muteButton"
 );
 //Defini el player para poder usarlo de manera global en el script
-const player = new mediaPlayer({ el: video, plugins: [ /* new AutoPlay() */ ] });
+const player = new mediaPlayer({ el: video, plugins: [new AutoPlay()] });
 
 button.onclick = () => player.play();
 muteButton.onclick = () => player.isMuted();
