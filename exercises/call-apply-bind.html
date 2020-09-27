@@ -1,0 +1,74 @@
+<body>
+    <a href="/exercises/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <ul class="call-to-action">
+        <li><button>Primer boton</button></li>
+        <li><button>Segundo boton</button></li>
+        <li><button>Tercer boton</button></li>
+    </ul>
+
+    <script>
+        function saludar() {
+            console.log(`Hola, soy ${this.name} ${this.apellido}`);
+        };
+
+        const david = {
+            name: "David",
+            apellido: "Vanegas Ramirez"
+        };
+
+        //Todas las funciones tienen el metodo call y en esta como parametro
+        //Se le debe ingresar el this que en este caso es David
+        saludar.call(david);
+
+        function caminar(metros, direccion) {
+            console.log(`${this.name} camina ${metros} metros hacia el ${direccion}`);
+        }
+
+        //Todas las funciones tienen el metodo call y en esta como parametro
+        //En el primer parametro se le manda el contexto (this) y luego los parametros de la función
+        caminar.call(david, 20, "sur");
+
+        //Todas las funciones tienen el metodo apply y en esta como parametro
+        //En el primer parametro se le manda el contexto (this) y luego los parametros de la función
+        //Pero se manda como un arreglo
+        const valores = [500, "sur"];
+        caminar.apply(david, [500, "sur"]);
+        //Se puede mandar una variable que ya tenga el arreglo
+        caminar.apply(david, valores)
+
+        /* Call - comma
+        Apply - arreglo */
+
+
+        //Ahora para el bind tenemos que:
+        const valentina = {
+            name: "Valentina",
+            apellido: "Garcia"
+        };
+
+        //El bind hace referencia a crear una nueva funcion
+        const valentinaSaluda = saludar.bind(valentina);
+        valentinaSaluda();
+
+        //Y si se quieren llamar a otros parametros ajenos al this se hace de la siguiente manera
+        const valentinaCamina = caminar.bind(valentina);
+        valentinaCamina(1000, "este");
+
+        //Una manera de optimizar codigo es la siguiente donde definimos unos parametros fijos
+        //Y otros parametors donde puede estar cambiando
+        const valentinaCamina2 = caminar.bind(valentina, 3000);
+        valentinaCamina2("oeste");
+
+        //Cuando es util usar cada uno de los metodos
+        const buttons = document.getElementsByClassName("call-to-action");
+        /* buttons.forEach(button => {
+            button.onclick = () => alert("Nunca pares de aprender");
+        }); */
+
+        Array.prototype.forEach.call(buttons, button => {
+            button.onclick = () => alert("Nunca pares de aprender");
+        });
+    </script>
+</body>
