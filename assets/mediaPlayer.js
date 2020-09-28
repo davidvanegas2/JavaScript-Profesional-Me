@@ -26,14 +26,17 @@ mediaPlayer.prototype._initPlugins = function() {
     });
 };
 
+//Metodo que pone play al video
 mediaPlayer.prototype.play = function() {
     this.media.play();
 };
 
+//Metodo que pausa el video
 mediaPlayer.prototype.pause = function() {
     this.media.pause();
 }
 
+//Metodo para el boton de Play / Pause dependiendo del estado del video lo pausa o no
 mediaPlayer.prototype.togglePlay = function() {
     if (this.media.paused)
         this.play();
@@ -41,6 +44,7 @@ mediaPlayer.prototype.togglePlay = function() {
         this.pause();
 }
 
+//Metodo para mutear o no el video
 mediaPlayer.prototype.isMuted = function() {
     if (this.media.muted)
         this.media.muted = false;
