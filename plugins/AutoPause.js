@@ -6,6 +6,8 @@ class AutoPause {
 
         //Se hace uso del bind ya que en este caso hay que mandar el this dentro de la función
         this.handleIntersection = this.handleIntersection.bind(this);
+
+        this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
     }
 
     run(player) {
@@ -19,6 +21,8 @@ class AutoPause {
 
         //Se pone el observer que constantemente va a estar revisando si se cumple la condición de arriba
         observer.observe(this.player.media);
+
+        document.addEventListener("visibilitychange", this.handleVisibilityChange)
     }
 
     handleIntersection(entries) {
@@ -32,6 +36,17 @@ class AutoPause {
         } else {
             this.player.pause();
         }
+    }
+
+    handleVisibilityChange() {
+        console.log(this);
+        const isVisible = document.visibilityState === "visible"
+        if (isVisible) {
+            this.player.play();
+        } else {
+            this.player.pause();
+        }
+
     }
 }
 
