@@ -7,7 +7,7 @@ class AutoPause {
         //Se hace uso del bind ya que en este caso hay que mandar el this dentro de la función
         this.handleIntersection = this.handleIntersection.bind(this);
 
-        this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
+        /* this.handleVisibilityChange = this.handleVisibilityChange.bind(this); */
     }
 
     run(player) {
@@ -38,7 +38,10 @@ class AutoPause {
         }
     }
 
-    handleVisibilityChange() {
+
+    //Otra manera de llamar a la funcion es con arrow function => 
+    //Asi nos evitamos el uso de this
+    handleVisibilityChange = () => {
         console.log(this);
         const isVisible = document.visibilityState === "visible"
         if (isVisible) {
