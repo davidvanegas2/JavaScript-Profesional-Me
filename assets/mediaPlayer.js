@@ -13,6 +13,7 @@ mediaPlayer.prototype._initPlugins = function() {
         media: this.media,
         play: () => this.play(),
         pause: () => this.pause(),
+        togglePlay: () => this.togglePlay(),
         get muted() {
             return this.media.muted;
         },
@@ -26,11 +27,19 @@ mediaPlayer.prototype._initPlugins = function() {
 };
 
 mediaPlayer.prototype.play = function() {
-    if (this.media.paused)
-        this.media.play();
-    else
-        this.media.pause();
+    this.media.play();
 };
+
+mediaPlayer.prototype.pause = function() {
+    this.media.pause();
+}
+
+mediaPlayer.prototype.togglePlay = function() {
+    if (this.media.paused)
+        this.play();
+    else
+        this.pause();
+}
 
 mediaPlayer.prototype.isMuted = function() {
     if (this.media.muted)
